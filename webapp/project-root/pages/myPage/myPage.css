@@ -1,0 +1,411 @@
+ :root {
+     --blue: #9ed2ee;
+     --text: #111;
+     --muted: #666;
+     --border: #e6e6e6;
+     --header-h: 64px;
+     --shadow: 0 12px 30px rgba(0, 0, 0, .12);
+     --radius: 10px;
+ }
+
+ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     margin: 0;
+     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto SansKR", sans-serif;
+     color: var(--text);
+
+     /* footer랑 화면 겹쳐서 수정 */
+     display: flex;
+     flex-direction: column;
+     min-height: 100vh;
+ }
+
+ /* ================= MY PAGE ================= */
+ .page {
+     width: min(1100px, calc(100% - 40px));
+     /* margin: auto 40px; */
+
+     /* 가운데 정렬하려고 수정*/
+     margin: 0 auto;
+ }
+
+
+
+ .mypage-topbar {
+     background: #de9961;
+     border-radius: 15px;
+     padding: 10px 14px;
+     display: flex;
+     width: 100%;
+     justify-content: space-between;
+     align-items: center;
+     border: 1px solid #de9961;
+     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+ }
+
+ .mypage-topbar .title {
+     font-weight: 800;
+     font-size: 14px;
+ }
+
+ .mypage-topbar .msg {
+     font-size: 12px;
+     color: var(--muted);
+
+ }
+
+ .content {
+     margin-top: 14px;
+     display: grid;
+     grid-template-columns: 240px 1fr;
+     gap: 18px;
+     /* height: 700px; */
+
+     /* 반응형으로 만들기 위해 수정 */
+     height: auto;
+     min-height: 0;
+ }
+
+ .side {
+     border: 1px solid var(--border);
+     border-radius: 8px;
+     padding: 12px;
+     width: 100%;
+     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+     background-color: white;
+
+ }
+
+ .side h3 {
+     margin: 2px 0 10px;
+     font-size: 18px;
+     font-weight: 900;
+
+ }
+
+ .menu {
+     list-style: none;
+     padding: 0;
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+
+ }
+
+
+ .menu li {
+     list-style: none;
+ }
+
+ .menu a {
+     padding: 10px;
+     font-size: 13px;
+     border-radius: 10px;
+     text-decoration: none;
+     color: #111;
+
+ }
+
+ .menu a:hover {
+     background: #f6f7f8;
+ }
+
+ .menu a.active {
+     background: lightgray;
+     font-weight: 800;
+
+ }
+
+ .main {
+     border: 1px solid var(--border);
+     border-radius: 8px;
+     padding: 14px;
+     width: 100%;
+     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+ }
+
+ /* header 줄어드는 것 막기 위해 수정 */
+ header {
+     flex-shrink: 0;
+ }
+
+ .site-main {
+     background-color: #f3f3f3;
+
+     /* footer랑 화면 겹쳐서 수정 */
+     flex: 1;
+     /* 여백 추가하기 위해 수정 */
+     padding-top: 40px;
+     padding-bottom: 40px;
+ }
+
+ .submenu {
+     list-style: none;
+     margin: 6px 0 0 12px;
+     padding: 0 0 0 10px;
+     border-left: 2px solid #f0f0f0;
+     display: flex;
+     flex-direction: column;
+     gap: 4px;
+ }
+
+ .submenu a {
+     padding: 8px 10px;
+     font-size: 12.5px;
+     border-radius: 10px;
+     display: block;
+ }
+
+ /* 테이블 */
+ .table-wrap {
+     overflow: auto;
+ }
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     min-width: 760px;
+ }
+
+ th,
+ td {
+     padding: 10px;
+     font-size: 12.5px;
+     border-bottom: 1px solid var(--border);
+     text-align: left;
+ }
+
+ th {
+     background: #f6f7f8;
+ }
+
+ .status {
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     font-weight: 800;
+ }
+
+
+
+ .btn {
+     border: 1px solid #d7d7d7;
+     background: #fff;
+     padding: 6px 10px;
+     border-radius: 10px;
+     font-size: 12px;
+     cursor: pointer;
+     font-weight: 700;
+ }
+
+ .btn:hover {
+     background: #f6f7f8;
+ }
+
+ /* ===== ✅ MODAL (여기가 빠져서 팝업이 안 떴던 원인) ===== */
+ .track-modal-backdrop {
+     position: fixed;
+     inset: 0;
+     background: rgba(0, 0, 0, .35);
+     display: none;
+     /* 기본 숨김 */
+     z-index: 9999;
+ }
+
+ .track-modal-backdrop[data-open="true"] {
+     display: block;
+     /* 열릴 때만 보이기 */
+ }
+
+ .track-modal {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: min(520px, calc(100vw - 30px));
+     background: #fff;
+     border-radius: var(--radius);
+     box-shadow: var(--shadow);
+     border: 1px solid var(--border);
+     overflow: hidden;
+ }
+
+ .modal-header {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     padding: 12px 14px;
+     background: #f6f7f8;
+     border-bottom: 1px solid var(--border);
+ }
+
+ .close {
+     border: 0;
+     background: transparent;
+     font-size: 18px;
+     cursor: pointer;
+     padding: 6px 10px;
+     border-radius: 10px;
+ }
+
+ .close:hover {
+     background: #e9eaec;
+ }
+
+ .modal-body {
+     padding: 14px;
+     font-size: 13px;
+ }
+
+ .kv {
+     display: grid;
+     grid-template-columns: 110px 1fr;
+     gap: 8px 10px;
+     margin-bottom: 12px;
+ }
+
+ .k {
+     color: var(--muted);
+     font-size: 12px;
+ }
+
+ .v {
+     font-weight: 700;
+ }
+
+ .track {
+     border: 1px solid var(--border);
+     border-radius: 12px;
+     padding: 10px;
+     background: #fff;
+ }
+
+ .track p {
+     margin: 0 0 6px;
+     color: var(--muted);
+     font-size: 12px;
+ }
+
+ .track ul {
+     margin: 0;
+     padding-left: 18px;
+     font-size: 12.5px;
+ }
+
+ /* 모바일 */
+ @media (max-width: 840px) {
+     .content {
+         grid-template-columns: 1fr;
+     }
+
+     /* 반응형으로 만들기 위해 수정 */
+     .side {
+         order: 1;
+         /* 사이드 메뉴 위로 */
+     }
+
+     .main {
+         order: 2;
+         /* 주문내역 아래로 */
+     }
+ }
+
+ .toast {
+     position: fixed;
+     left: 50%;
+     bottom: 24px;
+     transform: translateX(-50%);
+     background: rgba(20, 20, 20, 0.9);
+     color: #fff;
+     padding: 10px 14px;
+     border-radius: 10px;
+     font-size: 13px;
+     opacity: 0;
+     pointer-events: none;
+     transition: opacity .2s ease;
+     z-index: 9999;
+ }
+
+ .toast.is-show {
+     opacity: 1;
+ }
+
+
+ /* 페이지네이션 스타일 */
+ .pagination-wrap {
+     display: flex;
+     justify-content: center;
+     gap: 8px;
+     margin-top: 20px;
+ }
+
+ .pagination-btn {
+     border: 1px solid #ddd;
+     background-color: #fff;
+     color: #333;
+     padding: 6px 12px;
+     cursor: pointer;
+     border-radius: 4px;
+     transition: all 0.2s;
+ }
+
+ .pagination-btn:hover {
+     background-color: #f0f0f0;
+ }
+
+ .pagination-btn.active {
+     background-color: #0b6a86;
+     /* 사이트 테마색 */
+     color: white;
+     border-color: #0b6a86;
+     font-weight: bold;
+ }
+
+ .pagination-btn:disabled {
+     color: #ccc;
+     cursor: not-allowed;
+     background-color: #fff;
+ }
+
+
+
+ /* 우측 메인(주문내역) 영역 박스 스타일 */
+ .content .main {
+     border: 1px solid var(--border);
+     /* 테두리 색상 */
+     border-radius: 8px;
+     /* 모서리 둥글게 */
+     padding: 24px;
+     /* 내부 여백 (테이블이 답답하지 않게 넉넉히) */
+     width: 100%;
+     background-color: #fff;
+     /* 배경 흰색 */
+     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+     /* 그림자 효과 */
+ }
+
+ /* 제목(h2) 스타일 다듬기 */
+ .content .main h2 {
+     margin-top: 0;
+     margin-bottom: 20px;
+     font-size: 18px;
+     font-weight: 900;
+     padding-bottom: 10px;
+     border-bottom: 2px solid #f0f0f0;
+     /* 제목 아래 밑줄로 구분감 주기 */
+ }
+
+ .site-footer {
+     text-align: center;
+
+     /* 반응형으로 만들기 위해 수정 */
+     height: var(--footer-h);
+     align-items: center;
+     /* 높이 설정하기 위해 수정*/
+     min-height: 100px;
+    /* footer 줄어드는 것 막기 위해 수정 */
+     flex-shrink: 0;
+ }
