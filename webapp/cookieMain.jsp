@@ -10,12 +10,15 @@
 
 <h2>1. 쿠키 설정</h2>
 <%
+// new Cookie("쿠키 이름", "쿠키 값")
 Cookie cookie = new Cookie("mycookie","쿠키값");
 // 부가정보 세팅
 // 루트 패스에 저장함.. 이렇게 하면 하위 패스에서도 쿠키를 가져다 사용가능함
-cookie.setPath("/");	
 // 만약 특정 path를 지정하면, 해당 path 경로나 그 이하에서만 사용 가능함
+cookie.setPath("/");   
+// 쿠키 유지 시간 설정
 cookie.setMaxAge(3600);
+// 서버에서 브라우저로 쿠키 전송
 response.addCookie(cookie);
 %>
 
@@ -23,14 +26,16 @@ response.addCookie(cookie);
 <h2>쿠키 정보 보기</h2>
 <%
 // request 객체로부터 사용자의 모든 쿠키를 []로 얻어낸다
+// 브라우저에 저장된 쿠키 가져오기
 Cookie[] cookies = request.getCookies();
 if (cookies != null) {
-	for (Cookie c : cookies) {
-		String cookieName = c.getName();
-		String cookieValue = c.getValue();
-		
-		out.println(cookieName + " : " + cookieValue + "<br>");
-	}
+   // 쿠키 하나씩 꺼내기
+   for (Cookie c : cookies) {
+      String cookieName = c.getName();
+      String cookieValue = c.getValue();
+      
+      out.println(cookieName + " : " + cookieValue + "<br>");
+   }
 }
 %>
 

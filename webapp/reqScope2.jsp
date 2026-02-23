@@ -11,6 +11,7 @@
 
 <h2>요청 스콥에 있는 데이터 get</h2>
 <%
+// session에 저장된 "user"라는 데이터를 가져와라
 UserDTO user = (UserDTO)session.getAttribute("user");
 %>
 
