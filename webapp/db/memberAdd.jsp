@@ -15,14 +15,18 @@ String id = "hyojeong";
 String pass = "1234";
 String name = "테스트회원1";
 
-String sql = "Insert into member values (?, ?, ?, sysdate)";	// 동적으로 바뀌는 건 ? 로 작성. 밑에서 set~ 로 추가함
+String sql = "Insert into member values (?, ?, ?, sysdate)";   // 동적으로 바뀌는 건 ? 로 작성. 밑에서 set~ 로 추가함
 
+// DB 연결(conn) -> SQL 준비 -> PreparedStatement 생성
+// conn으로 SQL 실행 준비 -> PreparedStatement 생성 -> pstmt에 저장
+// prepareStatement(sql): SQL 실행 준비
 pooler.pstmt = pooler.conn.prepareStatement(sql);
 
 pooler.pstmt.setString(1, id);
 pooler.pstmt.setString(2, pass);
 pooler.pstmt.setString(3, name);
 
+// executeUpdate(): INSERT 실행
 int res = pooler.pstmt.executeUpdate();
 out.println(res + "행이 입력됨");
 
