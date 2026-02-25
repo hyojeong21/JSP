@@ -16,4 +16,12 @@
   	<param-name>INIT_PARAM</param-name>
   	<param-value>DD에 저장된 초기화 정보들</param-value>
   </context-param>
+  <context-param>
+  	<param-name>POSTS_PER_PAGE</param-name>
+  	<param-value>10</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>PAGES_PER_BLOCK</param-name>
+  	<param-value>5</param-value>
+  </context-param>
 </web-app>

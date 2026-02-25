@@ -3,8 +3,11 @@
     
 <%@ include file = "IsLoggedIn.jsp" %>
     
+<%-- <jsp:useBean>: 자바 객체를 생성하는 태그 --%>
+<%-- DAO: DB 작업, DTO: 데이터 전달용 --%>
 <jsp:useBean id="dto" class="webprj.board1.dtos.BoardDTO"/>
-<jsp:useBean id="dao" class="webprj.board1.daos.BoardDAO"/>    
+<jsp:useBean id="dao" class="webprj.board1.daos.BoardDAO"/>   
+<%-- <jsp:setProperty>: 폼에서 넘어온 값을 자동으로 DTO에 넣어주는 태그 --%> 
 <jsp:setProperty property="*" name="dto"/>
 
 <%
