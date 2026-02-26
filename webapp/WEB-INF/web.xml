@@ -24,4 +24,37 @@
   	<param-name>PAGES_PER_BLOCK</param-name>
   	<param-value>5</param-value>
   </context-param>
+  
+  <servlet>
+	<servlet-name>HelloServlet</servlet-name>
+	<servlet-class>webprj.servlets.HelloWorld</servlet-class>  
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>HelloServlet</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  	<url-pattern>/yours</url-pattern>
+  	<url-pattern>*.fs</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+	<servlet-name>A</servlet-name>
+	<servlet-class>webprj.servlets.A</servlet-class> 
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>A</servlet-name>
+  	<url-pattern>/a</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+	<servlet-name>B</servlet-name>
+	<servlet-class>webprj.servlets.B</servlet-class>  
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>B</servlet-name>
+  	<url-pattern>/b</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
