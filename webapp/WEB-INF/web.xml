@@ -34,7 +34,6 @@
   	<servlet-name>HelloServlet</servlet-name>
   	<url-pattern>/hello</url-pattern>
   	<url-pattern>/yours</url-pattern>
-  	<url-pattern>*.fs</url-pattern>
   </servlet-mapping>
   
   <servlet>
