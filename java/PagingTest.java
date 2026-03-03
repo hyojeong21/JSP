@@ -1,6 +1,11 @@
+import java.util.UUID;
+
 public class PagingTest {
 
 	public static void main(String[] args) {
+		
+		System.out.println(UUID.randomUUID());
+		
 		// 303개의 글 존재함
 		// 페이지 범위의 시작값 구해보기
 		// 요청된 페이지 - 1 * 10(한 페이지에서 보여질 목록수) + 1;

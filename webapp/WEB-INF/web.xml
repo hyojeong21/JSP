@@ -56,4 +56,41 @@
   	<url-pattern>/b</url-pattern>
   </servlet-mapping>
   
+<!-- 컨트롤러 매핑 -->
+  <servlet>
+	<servlet-name>Controller</servlet-name>
+    <servlet-class>webprj.mvc.controller.MvcBoardController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>Controller</servlet-name>
+	<url-pattern>/mvcboard/list.do</url-pattern>
+  </servlet-mapping>
+
+<!-- 글작성 컨트롤러 매핑 -->
+  <servlet>
+	<servlet-name>WriteController</servlet-name>
+    <servlet-class>webprj.mvc.controller.WriteController</servlet-class>
+    <multipart-config>
+    	<max-file-size>10485760000</max-file-size>
+    	<max-request-size>10485760000000</max-request-size>
+    </multipart-config>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>WriteController</servlet-name>
+	<url-pattern>/mvcboard/write.do</url-pattern>
+  </servlet-mapping>
+  
+<!-- 파일 다운로드 컨트롤러 -->
+  <servlet>
+	<servlet-name>download</servlet-name>
+    <servlet-class>webprj.mvc.controller.FileDownController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+	<servlet-name>download</servlet-name>
+	<url-pattern>/mvcboard/download.do</url-pattern>
+  </servlet-mapping>
+
 </web-app>
