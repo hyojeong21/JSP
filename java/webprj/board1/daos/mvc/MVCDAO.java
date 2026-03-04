@@ -11,6 +11,33 @@ import webprj.common.JDBCPooler;
 
 public class MVCDAO extends JDBCPooler {
 	
+	// 글 상세보기 메서드 정의
+	public MVCDTO selectView(String idx) {
+		MVCDTO dto = new MVCDTO();
+		String sql = " Select * from mvcboard where idx = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idx);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setIdx(rs.getString(1));
+				dto.setName(rs.getString(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContent(rs.getString(4));
+				dto.setPostdate(rs.getDate(5));
+				dto.setOfile(rs.getString(6));
+				dto.setSfile(rs.getString(7));
+				dto.setDowncount(rs.getInt(8));
+				dto.setPass(rs.getString(9));
+				dto.setVisitcount(rs.getInt(10));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
 	  // 신규 글 insert 메서드 정의
 	  // 리턴값으로는 insert된 row 수를 리턴한다.
 	  public int insertWrite(MVCDTO dto) {
